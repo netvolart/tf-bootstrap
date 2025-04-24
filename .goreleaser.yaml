@@ -1,0 +1,40 @@
+version: 2
+
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod tidy
+
+builds:
+  - binary: tf-bootstrap
+    env:
+      - CGO_ENABLED=0
+    goarch:
+      - amd64
+      - arm64    
+    goos:
+      - linux
+      - windows
+      - darwin
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+brews:
+  - name: tf-bootstrap
+    homepage: https://github.com/netvolart/tf-bootstrap
+    repository:
+      owner: netvolart
+      name: homebrew-tap
+    commit_author:
+      name: Artem Volkov
+      email: netvolart@gmail.com
+release:
+  footer: >-
+
+    ---
+
+    Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
