@@ -1,0 +1,30 @@
+builds:
+  - binary: tf-bootstrap
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  - name: tf-boot
+    homepage: https://github.com/netvolart/tf-bootstrap
+    tap:
+      owner: netvolart
+      name: homebrew-tap
+    commit_author:
+      name: Artem Volkov
+      email: netvolart@gmail.com
+
+checksum:
+  name_template: 'checksums.txt'
